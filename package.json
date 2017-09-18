@@ -1,0 +1,22 @@
+{
+  "name": "creeper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  },
+  "dependencies": {
+    "async": "^2.5.0",
+    "axios": "^0.16.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.15.4",
+    "superagent": "^3.6.0"
+  }
+}
