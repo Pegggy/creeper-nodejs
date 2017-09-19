@@ -93,7 +93,7 @@ async function fetchDoubanList(start) {
   }
   return resultList;
 }
-async function fetchDoubanTopic(url){
+async function fetchDoubanTopic(url,title){
   let response = await axios.get(url);
   let htmlText = response.data;
   const $ = cheerio.load(htmlText);
@@ -108,7 +108,7 @@ async function fetchDoubanTopic(url){
     imgs.push(contextImgs.eq(j).attr('src'));
   }
   return {
-    url,details,imgs
+    url,title,details,imgs
   }
   // return details
 }
