@@ -2,8 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const ipmaker = require('./ipmaker');
 
-// let ip = ipmaker.getRandomIp();
-// console.log(ip);
+// 58同城杭州租房信息列表
 async function fetchHouseList (page) {
   let res = await axios({
     method: 'get',
@@ -24,7 +23,7 @@ async function fetchHouseList (page) {
   return resultList;
 }
 
-
+// 58同城获取租房帖子的详细信息
 async function fetchHouseInfo(url){
   let response = await axios.get(url);
   let htmlText = response.data;
@@ -73,7 +72,7 @@ async function fetchHouseInfo(url){
 
 
 
-
+// 获取豆瓣杭州租房小组列表
 async function fetchDoubanList(start) {
   let res = await axios({
     method: 'get',
@@ -93,6 +92,8 @@ async function fetchDoubanList(start) {
   }
   return resultList;
 }
+
+// 获取豆瓣租房帖子详细信息
 async function fetchDoubanTopic(url,title){
   let response = await axios.get(url);
   let htmlText = response.data;
@@ -100,7 +101,7 @@ async function fetchDoubanTopic(url,title){
   let details = [];
   let imgs = [];
   const contextText = $('.topic-content > p:first-child');
-  const contextImgs = $('.topic-content img');
+  const contextImgs = $('.topic-figure>img');
   for(let i = 0; i < contextText.length; i++){
     details.push(contextText.eq(i).text());
   }
