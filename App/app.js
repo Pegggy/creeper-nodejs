@@ -6,12 +6,14 @@ $(function(){
   let $lists = $('.lists');
   let $load = $('.load-more');
   let $info = $('.info');
-
+  let $loadimg = $('.load-img');
   $searchBtn.on('click',function(){
+    $lists.empty();
     $info.html('');
     pageIndex = 1;
     console.log('current page '+ pageIndex );
     $searchBtn.addClass('onload');
+    $loadimg.addClass('active');
     target = $input.val();
     getPage(pageIndex,target);
     $searchBtn.removeClass('onload');
@@ -19,6 +21,7 @@ $(function(){
   })
   $load.on('click',function(e){
     e.preventDefault();
+    $loadimg.addClass('active');
     $info.html('');
     pageIndex += 1;
     console.log('current page '+ pageIndex );
@@ -37,6 +40,7 @@ $(function(){
         target: target
       },
       success: (data) =>{
+        $loadimg.removeClass('active');
         if (data.length === 0){
           $info.html('第'+index+'页没有'+target+'地区房源信息');
         }else{

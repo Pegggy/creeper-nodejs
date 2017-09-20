@@ -4,7 +4,6 @@ const app = express();
 
 async function doubanCreeper(index,target){
   let pageIndex = index !== 1 ? (index-1)*25 : index-1;
-  console.log(pageIndex);
   let pageData = [];
   let results = await crawler.fetchDoubanList(pageIndex);
   for(let j = 0; j < results.length; j++){
@@ -27,7 +26,6 @@ app.use(express.static('../App'));
 app.get('/getPage',function(req,res){
   let index = req.query.index;
   let target = req.query.target;
-  console.log(index,target);
   if(!target){
     doubanCreeper(index).then((data)=>{
       res.send(data);

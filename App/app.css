@@ -9,8 +9,9 @@ a{
   color: #000;
 }
 .body{
-  width: 960px;
+  width: 660px;
   margin: 0 auto;
+  position: relative;
 }
 .search-input{
   height: 30px;
@@ -24,9 +25,21 @@ a{
   background: #007fff;
   border-radius: 3px;
   font-size: 20px;
+  cursor: pointer;
 }
 .onload{
-  disabled: true;
+  disabled: disabled;
+}
+.reminder{
+  position: fixed;
+  width: 200px;
+  top: 30px;
+  right: 40px;
+  background: #a6d2fa;
+  color: #05264c;
+  border-radius: 3px;
+  box-shadow: 6px 4px 20px 0px rgba(0,0,0,0.27);
+  padding: 10px;
 }
 .lists{
   margin-bottom: 20px;
@@ -45,10 +58,29 @@ a{
 .item>p{
   text-align: left;
 }
-
+.load-img{
+  margin: 20px auto;
+  text-align: center;
+  display: none; 
+}
+.load-img.active{
+  display: block;
+}
+.load-img>img{
+  width: 100px;
+  animation: 1.5s linear infinite loading;
+}
 .load-more{
   color: #fff;
   background: #007fff;
   border-radius: 3px;
   padding: 5px 8px;
+}
+@keyframes loading{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }
