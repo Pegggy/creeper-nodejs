@@ -1,5 +1,5 @@
 $(function(){
-  let pageIndex = 0;
+  let pageIndex = 1;
   let target = '';
   let $searchBtn = $('.search-btn');
   let $input = $('.search-input');
@@ -17,7 +17,8 @@ $(function(){
     $searchBtn.removeClass('onload');
 
   })
-  $load.on('click',function(){
+  $load.on('click',function(e){
+    e.preventDefault();
     $info.html('');
     pageIndex += 1;
     console.log('current page '+ pageIndex );
@@ -26,7 +27,7 @@ $(function(){
     getPage(pageIndex,target);
     $load.removeClass('onload');
   })
-  
+
   function getPage(index,target){
     $.ajax({
       url: 'getPage',
