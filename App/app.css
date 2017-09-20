@@ -25,6 +25,9 @@ a{
   border-radius: 3px;
   font-size: 20px;
 }
+.onload{
+  disabled: true;
+}
 .lists{
   margin-bottom: 20px;
 }
@@ -37,12 +40,10 @@ a{
   background: #f1f1f1;
   border-radius: 3px;
   box-shadow: 6px 4px 20px 0px rgba(0,0,0,0.27);
+  margin-bottom: 20px;
 }
-.item>a,.item>p{
+.item>p{
   text-align: left;
-}
-.item>img{
-  width: 230px;
 }
 
 .load-more{

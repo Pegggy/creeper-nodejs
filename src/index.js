@@ -1,5 +1,6 @@
 const crawler = require('./crawler');
-
+const express = require('express');
+const app = express();
 
 async function doubanCreeper(index,target){
   let pageIndex = index !== 1 ? (index-1)*25 : 0;
@@ -22,4 +23,22 @@ function isNear(places,target){
   }
   return places.indexOf(target) > -1
 }
-doubanCreeper(4,'西湖')
+app.use(express.static('../App'));
+app.get('/getPage',function(req,res){
+  let index = req.query.start;
+  let target = req.query.target;
+  console.log(index,target);
+  if(!target){
+    doubanCreeper(index).then((data)=>{
+      res.send(data);
+    });
+  }else{
+    doubanCreeper(index,target).then((data)=>{
+      res.send(data);
+    });
+  }
+})
+app.listen(3000,function(){
+  console.log('app is running at port 3000!');
+})
+
